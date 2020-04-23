@@ -12,8 +12,6 @@ import (
 func (s *Server) Init(port ...string) {
 	if len(port) >= 1 {
 		s.Port = port[0]
-	} else {
-		s.Port = "8080"
 	}
 	s.Router = gin.Default()
 	s.Router.Use(cors.Default())
