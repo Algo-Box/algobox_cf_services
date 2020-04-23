@@ -12,4 +12,5 @@ const (
 // Init is Used to Initialize the user Instance
 func Init(g *server.SubGroup) {
 	g.G.GET("/:username", handleUser)
+	g.G.GET("/", handleHome)
 }

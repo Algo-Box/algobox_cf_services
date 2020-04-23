@@ -5,6 +5,6 @@ type Problem struct {
 	ContestID int      `json:"contestId"`
 	Index     string   `json:"index"`
 	Name      string   `json:"name"`
-	Rating    string   `json:"rating"`
+	Rating    int      `json:"rating"`
 	Tags      []string `json:"tags"`
 }

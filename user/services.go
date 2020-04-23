@@ -32,3 +32,25 @@ func getAllSubs(handle string) []structs.Submission {
 	json.Unmarshal(body, &response)
 	return response.Result
 }
+
+func getDashboardData(handle string) structs.DashboardData {
+	subs := getAllSubs(handle)
+	byTags := map[string]int{}
+	byIndex := map[string]int{}
+	byRating := map[int]int{}
+	for _, v := range subs {
+		if v.Verdict != "OK" {
+			continue
+		}
+		for _, tag := range v.Problem.Tags {
+			byTags[tag]++
+		}
+		byIndex[string(v.Problem.Index[0])]++
+		byRating[v.Problem.Rating]++
+	}
+	return structs.DashboardData{
+		ByIndex:  byIndex,
+		ByRating: byRating,
+		ByTags:   byTags,
+	}
+}
